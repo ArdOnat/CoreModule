@@ -6,9 +6,9 @@
 //
 
 public class ApiEnvironment {
-    let baseURL: String
+    public let baseURL: String
     
-    init(environmentType: NetworkEnvironment) {
+    public init(environmentType: NetworkEnvironment) {
         self.baseURL = environmentType.baseURL
     }
 }
