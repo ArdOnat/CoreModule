@@ -9,7 +9,7 @@ public final class WeakRef<T: AnyObject> {
     
     weak var object: T?
     
-    init(_ object: T) {
+    public init(_ object: T) {
         self.object = object
     }
 }
