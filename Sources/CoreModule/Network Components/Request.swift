@@ -9,7 +9,7 @@ public typealias HTTPHeaders = [String: String]
 public typealias Parameters = [String: Any]
 
 public protocol Request {
-    var apiEnvironment : ApiEnvironment { get }
+    var apiEnvironment : ApiEnvironment { get set }
     var path: String { get }
     var httpMethod: HTTPMethods { get }
     var urlParameters: Parameters? { get }

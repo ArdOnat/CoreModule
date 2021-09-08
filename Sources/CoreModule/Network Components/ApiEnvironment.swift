@@ -5,14 +5,10 @@
 //  Created by Arda Onat on 23.08.2021.
 //
 
-public protocol ApiEnvironment {
-    var environmentType: NetworkEnvironment { get set }
+public class ApiEnvironment {
+    let baseURL: String
     
-    init(_ environmentType: NetworkEnvironment)
-}
-
-public extension ApiEnvironment {
-    var baseURL: String {
-        return environmentType.baseURL
+    init(environmentType: NetworkEnvironment) {
+        self.baseURL = environmentType.baseURL
     }
 }
