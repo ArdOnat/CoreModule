@@ -1,6 +1,6 @@
 //
 //  WeakRefTests.swift
-//  WeatherAppTests
+//  CoreModuleTests
 //
 //  Created by Arda Onat on 24.08.2021.
 //
