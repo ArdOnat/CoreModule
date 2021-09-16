@@ -13,7 +13,7 @@ class ApiEnvironmentTests: XCTestCase {
     func testApiEnvironmentBaseURLValue() {
         let apiEnvironment = ApiEnvironment(environmentType: MockNetworkEnvironment())
         
-        XCTAssertEqual(apiEnvironment.baseURL, "BaseURL"Atfi)
+        XCTAssertEqual(apiEnvironment.baseURL, "BaseURL")
     }
     
     private struct MockNetworkEnvironment: NetworkEnvironment {
