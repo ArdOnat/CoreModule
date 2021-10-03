@@ -5,6 +5,8 @@
 //  Created by Arda Onat on 23.08.2021.
 //
 
+///  NetworkError enum can be returned as  an error when an problem occurs while sending an request or interacting with an response.
+///  .custom can be used if custom error texts are needed.
 public enum NetworkError: Error {
     case parametersNil
     case encodingFailed

@@ -8,6 +8,7 @@
 public typealias HTTPHeaders = [String: String]
 public typealias Parameters = [String: Any]
 
+/// Enum, structs that conform to this protocol should be created in App and sent to ApiClient module.
 public protocol Request {
     var apiEnvironment : ApiEnvironment { get set }
     var path: String { get }
