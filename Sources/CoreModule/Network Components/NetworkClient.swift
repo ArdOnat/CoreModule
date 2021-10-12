@@ -7,6 +7,6 @@
 
 import Foundation
 
-public protocol ApiClient {
+public protocol NetworkClient {
     func request<T>(_ request: Request, queue: DispatchQueue, completion: @escaping (Result<T, NetworkError>) -> ()) where T : Decodable
 }
