@@ -1,5 +1,5 @@
 //
-//  ExtensionTests.swift
+//  StringExtensionTests.swift
 //  
 //
 //  Created by Arda Onat on 23.01.2022.
@@ -16,7 +16,7 @@ class StringExtensionTests: XCTestCase {
     }
     
     func testStringOptionalValueIsCorrect() {
-        let nilString: String? = "string value"
-        XCTAssertEqual(nilString.valueOrEmpty, "string value")
+        let nonNilString: String? = "string value"
+        XCTAssertEqual(nonNilString.valueOrEmpty, "string value")
     }
 }

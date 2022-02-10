@@ -2,17 +2,16 @@
 //  File.swift
 //  
 //
-//  Created by Arda Onat on 23.01.2022.
+//  Created by Arda Onat on 10.02.2022.
 //
 
-public extension Optional where Wrapped == String {
-    var valueOrEmpty: String {
+public extension Optional where Wrapped == Float {
+    var valueOrEmpty: Float {
         switch self {
         case .none:
-            return ""
+            return 0
         case .some(let wrapped):
             return wrapped
         }
     }
 }
-
