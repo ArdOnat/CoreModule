@@ -13,11 +13,11 @@ public enum NetworkError: Error {
     case decodingFailed
     case missingURL
     case invalidRequest
-    case invalidStatusCode
+    case invalidStatusCode(statusCode: Int)
     case invalidBaseURL
     case custom(errorText: String)
     
-    var errorText: String {
+    public var errorText: String {
         switch self {
         case .parametersNil: return "Parameters are nil."
         case .encodingFailed: return "Parameter encoding failed."
