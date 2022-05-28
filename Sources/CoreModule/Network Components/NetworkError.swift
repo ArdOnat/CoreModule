@@ -5,15 +5,17 @@
 //  Created by Arda Onat on 23.08.2021.
 //
 
+import Foundation
+
 ///  NetworkError enum can be returned as  an error when an problem occurs while sending an request or interacting with an response.
-///  .custom can be used if custom error texts are needed.
+///  .custom can be used if custom error texts are needed.\
 public enum NetworkError: Error {
     case parametersNil
     case encodingFailed
     case decodingFailed
     case missingURL
     case invalidRequest
-    case invalidStatusCode(statusCode: Int)
+    case invalidStatusCode(response: HTTPURLResponse)
     case invalidBaseURL
     case custom(errorText: String)
     
