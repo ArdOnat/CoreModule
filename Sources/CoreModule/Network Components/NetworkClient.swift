@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol NetworkClient {
-    func request<T>(_ request: Request, queue: DispatchQueue, completion: @escaping (Result<T, NetworkError>) -> ()) where T : Decodable
+    func request<T>(_ request: Request, queue: DispatchQueue, completion: @escaping (Result<T, Error>) -> ()) where T : Decodable
 }
