@@ -15,7 +15,7 @@ public enum NetworkError: Error {
     case decodingFailed
     case missingURL
     case invalidRequest
-    case invalidStatusCode(response: HTTPURLResponse)
+    case invalidStatusCode(response: URLResponse)
     case invalidBaseURL
     case custom(errorText: String)
     
@@ -29,6 +29,15 @@ public enum NetworkError: Error {
         case .invalidStatusCode: return "Status code is invalid."
         case .invalidBaseURL: return "Invalid baseURL."
         case .custom(let errorText): return "\(errorText)"
+        }
+    }
+    
+    public var errorResponse: URLResponse? {
+        switch self {
+        case .invalidStatusCode(let response):
+            return response
+        default:
+            return nil
         }
     }
 }
