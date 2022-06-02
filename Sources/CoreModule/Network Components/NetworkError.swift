@@ -15,7 +15,7 @@ public enum NetworkError: Error {
     case decodingFailed
     case missingURL
     case invalidRequest
-    case invalidStatusCode(responseData: Data)
+    case invalidStatusCode(responseData: Data, task: URLSessionDataTask)
     case invalidBaseURL
     case custom(errorText: String)
     
@@ -34,8 +34,17 @@ public enum NetworkError: Error {
     
     public var responseData: Data? {
         switch self {
-        case .invalidStatusCode(let responseData):
+        case .invalidStatusCode(let responseData, _):
             return responseData
+        default:
+            return nil
+        }
+    }
+    
+    public var dataTask: URLSessionDataTask? {
+        switch self {
+        case .invalidStatusCode(_, let dataTask):
+            return dataTask
         default:
             return nil
         }
