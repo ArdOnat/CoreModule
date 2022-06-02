@@ -7,6 +7,9 @@
 
 import Foundation
 
+public typealias RequestDetail = (Data?, Request, Completion)
+public typealias Completion = (Result<Decodable, NetworkError>) -> ()
+
 ///  NetworkError enum can be returned as  an error when an problem occurs while sending an request or interacting with an response.
 ///  .custom can be used if custom error texts are needed.\
 public enum NetworkError: Error {
@@ -15,7 +18,7 @@ public enum NetworkError: Error {
     case decodingFailed
     case missingURL
     case invalidRequest
-    case invalidStatusCode(responseData: Data, task: URLSessionDataTask)
+    case invalidStatusCode(requestDetail: RequestDetail)
     case invalidBaseURL
     case custom(errorText: String)
     
@@ -32,19 +35,10 @@ public enum NetworkError: Error {
         }
     }
     
-    public var responseData: Data? {
+    public func requestDetails() -> RequestDetail? {
         switch self {
-        case .invalidStatusCode(let responseData, _):
-            return responseData
-        default:
-            return nil
-        }
-    }
-    
-    public var dataTask: URLSessionDataTask? {
-        switch self {
-        case .invalidStatusCode(_, let dataTask):
-            return dataTask
+        case .invalidStatusCode(let requestDetail):
+            return requestDetail
         default:
             return nil
         }
