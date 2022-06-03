@@ -11,6 +11,12 @@ public struct ErroredRequestDetail {
     let statusCode: Int
     let errorResponseData: Data?
     let request: Request
+    
+    public init (statusCode: Int, errorResponseData: Data, request: Request) {
+        self.statusCode = statusCode
+        self.errorResponseData = errorResponseData
+        self.request = request
+    }
 }
 
 ///  NetworkError enum can be returned as  an error when an problem occurs while sending an request or interacting with an response.
