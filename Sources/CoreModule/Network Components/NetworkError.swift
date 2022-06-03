@@ -8,9 +8,9 @@
 import Foundation
 
 public struct ErroredRequestDetail {
-    let statusCode: Int
-    let errorResponseData: Data?
-    let request: Request
+    public let statusCode: Int
+    public let errorResponseData: Data?
+    public let request: Request
     
     public init (statusCode: Int, errorResponseData: Data, request: Request) {
         self.statusCode = statusCode
