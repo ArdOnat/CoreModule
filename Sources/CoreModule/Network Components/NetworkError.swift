@@ -7,7 +7,11 @@
 
 import Foundation
 
-public typealias RequestDetail = (Data?, Request)
+public struct ErroredRequestDetail {
+    let statusCode: Int
+    let errorResponseData: Data?
+    let request: Request
+}
 
 ///  NetworkError enum can be returned as  an error when an problem occurs while sending an request or interacting with an response.
 ///  .custom can be used if custom error texts are needed.\
@@ -17,7 +21,7 @@ public enum NetworkError: Error {
     case decodingFailed
     case missingURL
     case invalidRequest
-    case invalidStatusCode(requestDetail: RequestDetail)
+    case invalidStatusCode(requestDetail: ErroredRequestDetail)
     case invalidBaseURL
     case custom(errorText: String)
     
@@ -28,13 +32,13 @@ public enum NetworkError: Error {
         case .decodingFailed: return "Response decoding failed."
         case .missingURL: return "URL is nil."
         case .invalidRequest: return "Request is invalid."
-        case .invalidStatusCode: return "Status code is invalid."
+        case .invalidStatusCode(let requestDetail): return "Status code \(requestDetail.statusCode) is invalid."
         case .invalidBaseURL: return "Invalid baseURL."
         case .custom(let errorText): return "\(errorText)"
         }
     }
     
-    public func requestDetails() -> RequestDetail? {
+    public func requestDetails() -> ErroredRequestDetail? {
         switch self {
         case .invalidStatusCode(let requestDetail):
             return requestDetail
