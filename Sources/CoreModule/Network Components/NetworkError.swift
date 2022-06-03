@@ -7,8 +7,7 @@
 
 import Foundation
 
-public typealias RequestDetail = (Data?, Request, Completion)
-public typealias Completion = (Result<Decodable, NetworkError>) -> ()
+public typealias RequestDetail = (Data?, Request)
 
 ///  NetworkError enum can be returned as  an error when an problem occurs while sending an request or interacting with an response.
 ///  .custom can be used if custom error texts are needed.\
