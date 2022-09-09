@@ -1,18 +1,10 @@
-//
-//  File.swift
-//  
-//
-//  Created by Arda Onat on 23.01.2022.
-//
-
 public extension Optional where Wrapped == String {
     var valueOrEmpty: String {
         switch self {
         case .none:
             return ""
-        case .some(let wrapped):
+        case let .some(wrapped):
             return wrapped
         }
     }
 }
-

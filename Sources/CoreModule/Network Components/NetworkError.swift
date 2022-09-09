@@ -1,18 +1,11 @@
-//
-//  NetworkError.swift
-//
-//
-//  Created by Arda Onat on 23.08.2021.
-//
-
 import Foundation
 
 public struct ErroredRequestDetail {
     public let statusCode: Int
     public let errorResponseData: Data?
     public let request: Request
-    
-    public init (statusCode: Int, errorResponseData: Data, request: Request) {
+
+    public init(statusCode: Int, errorResponseData: Data, request: Request) {
         self.statusCode = statusCode
         self.errorResponseData = errorResponseData
         self.request = request
@@ -30,7 +23,7 @@ public enum NetworkError: Error {
     case invalidStatusCode(requestDetail: ErroredRequestDetail)
     case invalidBaseURL
     case custom(errorText: String)
-    
+
     public var errorText: String {
         switch self {
         case .parametersNil: return "Parameters are nil."
@@ -38,15 +31,18 @@ public enum NetworkError: Error {
         case .decodingFailed: return "Response decoding failed."
         case .missingURL: return "URL is nil."
         case .invalidRequest: return "Request is invalid."
-        case .invalidStatusCode(let requestDetail): return "Status code \(requestDetail.statusCode) is invalid."
+        case let .invalidStatusCode(requestDetail): return "Status code \(requestDetail.statusCode) is invalid."
         case .invalidBaseURL: return "Invalid baseURL."
-        case .custom(let errorText): return "\(errorText)"
+        case let .custom(errorText): return "\(errorText)"
         }
     }
-    
+
+    /// Function for returning ErroredRequestDetail type of data which can be used on the client side to get more information about the error.
+    /// -
+    /// - Returns: ErroredRequestDetail that includes statusCode (Int), responseData (Data?), request (Request)  that failed.
     public func requestDetails() -> ErroredRequestDetail? {
         switch self {
-        case .invalidStatusCode(let requestDetail):
+        case let .invalidStatusCode(requestDetail):
             return requestDetail
         default:
             return nil
