@@ -24,7 +24,7 @@ public struct UserDefault<Value> {
 
     public var wrappedValue: Value {
         get {
-            return container.object(forKey: key) as? Value ?? defaultValue
+            container.object(forKey: key) as? Value ?? defaultValue
         }
         set {
             if let optional = newValue as? AnyOptional, optional.isNil {
