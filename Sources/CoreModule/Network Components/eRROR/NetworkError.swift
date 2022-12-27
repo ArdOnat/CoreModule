@@ -1,17 +1,5 @@
 import Foundation
 
-public struct ErroredRequestDetail {
-    public let statusCode: Int
-    public let errorResponseData: Data?
-    public let request: Request
-
-    public init(statusCode: Int, errorResponseData: Data, request: Request) {
-        self.statusCode = statusCode
-        self.errorResponseData = errorResponseData
-        self.request = request
-    }
-}
-
 ///  NetworkError enum can be returned as  an error when an problem occurs while sending an request or interacting with an response.
 ///  .custom can be used if custom error texts are needed.\
 public enum NetworkError: Error {
